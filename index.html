@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101225">
+  <meta name="description" content="Play a neon, arcade-style game of Tic-Tac-Toe against the CPU or a friend.">
+  <title>Neon Noughts — Tic-Tac-Toe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Neon Noughts home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>NEON<span class="brand-light">NOUGHTS</span></span>
+      </a>
+      <span class="edition"><span class="live-dot"></span> ARCADE EDITION</span>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">A CLASSIC, REWIRED</p>
+      <h1 id="page-title">Make your <span>move.</span></h1>
+      <p class="intro-copy">Three in a row. One little board. Infinite rematches.</p>
+    </section>
+
+    <section class="game-layout" aria-label="Tic-Tac-Toe game">
+      <aside class="control-panel panel">
+        <div class="panel-heading"><span class="step-number">01</span><h2>Choose your game</h2></div>
+        <div class="field-label">PLAY MODE</div>
+        <div class="mode-switch" role="group" aria-label="Play mode">
+          <button type="button" class="mode-button active" data-mode="cpu" aria-pressed="true"><span aria-hidden="true">◉</span> VS CPU</button>
+          <button type="button" class="mode-button" data-mode="friend" aria-pressed="false"><span aria-hidden="true">◎</span> 2 PLAYER</button>
+        </div>
+
+        <div id="cpu-options">
+          <div class="field-label difficulty-label">CPU LEVEL</div>
+          <label class="select-wrap" for="difficulty">
+            <span class="sr-only">CPU difficulty</span>
+            <select id="difficulty">
+              <option value="easy">Easy <span>·</span> Warm up</option>
+              <option value="medium" selected>Medium <span>·</span> Thinks ahead</option>
+              <option value="hard">Unbeatable <span>·</span> Good luck</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true">⌄</span>
+          </label>
+          <div class="field-label mark-label">YOU PLAY AS</div>
+          <div class="mark-picker" role="group" aria-label="Choose your mark">
+            <button type="button" class="mark-button mark-x selected" data-mark="X" aria-pressed="true">X</button>
+            <button type="button" class="mark-button mark-o" data-mark="O" aria-pressed="false">O</button>
+          </div>
+        </div>
+        <div class="panel-tip"><span aria-hidden="true">✦</span><p id="tip-text">Can you outsmart the machine?</p></div>
+      </aside>
+
+      <section class="board-panel panel" aria-label="Game board and score">
+        <div class="scoreboard" aria-label="Scoreboard">
+          <div class="score-card active-score" id="score-x-card">
+            <div class="score-player"><span class="score-symbol symbol-x">X</span><span id="score-x-label">YOU</span></div>
+            <strong id="score-x">0</strong>
+          </div>
+          <div class="score-divider"><span>—</span><small>DRAW</small><span>—</span></div>
+          <div class="score-card" id="score-o-card">
+            <div class="score-player"><span class="score-symbol symbol-o">O</span><span id="score-o-label">CPU</span></div>
+            <strong id="score-o">0</strong>
+          </div>
+        </div>
+
+        <div class="status-row" aria-live="polite" aria-atomic="true">
+          <span class="turn-indicator" id="turn-indicator">X</span>
+          <p id="game-status">Your turn — make a move!</p>
+          <span class="draw-count"><span id="draw-score">0</span> DRAWS</span>
+        </div>
+
+        <div class="board" id="board" role="group" aria-label="Tic-Tac-Toe board">
+          <button class="cell" type="button" data-index="0" aria-label="Row 1, column 1, empty"></button>
+          <button class="cell" type="button" data-index="1" aria-label="Row 1, column 2, empty"></button>
+          <button class="cell" type="button" data-index="2" aria-label="Row 1, column 3, empty"></button>
+          <button class="cell" type="button" data-index="3" aria-label="Row 2, column 1, empty"></button>
+          <button class="cell" type="button" data-index="4" aria-label="Row 2, column 2, empty"></button>
+          <button class="cell" type="button" data-index="5" aria-label="Row 2, column 3, empty"></button>
+          <button class="cell" type="button" data-index="6" aria-label="Row 3, column 1, empty"></button>
+          <button class="cell" type="button" data-index="7" aria-label="Row 3, column 2, empty"></button>
+          <button class="cell" type="button" data-index="8" aria-label="Row 3, column 3, empty"></button>
+        </div>
+        <div class="board-actions">
+          <button type="button" class="reset-button" id="new-round"><span aria-hidden="true">↻</span> NEW ROUND</button>
+          <button type="button" class="text-button" id="reset-score">Reset score</button>
+        </div>
+      </section>
+    </section>
+
+    <footer><span>BUILT FOR THE LOVE OF THE GAME</span><span class="footer-star" aria-hidden="true">✳</span><span>NO LUCK. JUST STRATEGY.</span></footer>
+  </main>
+</body>
+</html>
